@@ -9,6 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:auto}
 body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden;cursor:none}
+button{font-family:inherit;letter-spacing:inherit}
 
 /* CURSOR */
 #cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .18s,height .18s}
@@ -191,7 +192,7 @@ footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 2
       <li><a href="#s5">Certs</a></li>
       <li><a href="#s6">Contact</a></li>
     </ul>
-    <a href="mailto:kutumbakaharshithsiddartha@gmail.com" class="n-cta">Get in touch →</a>
+    <button onclick="openEmail()" class="n-cta" style="border:none;background:none;font-family:inherit;font-size:13px;padding:0;cursor:none;color:#2997ff;transition:color .2s">Get in touch →</button>
   </div>
 </nav>
 
@@ -204,7 +205,7 @@ footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 2
       <h1 class="hero-h">Harshith<br><span class="dim">Siddartha.</span></h1>
       <p class="hero-sub"><b>Alteryx · Xceptor · LangChain · Power BI · AWS</b><br>Five years turning messy data into clean automation.</p>
       <div class="hero-btns">
-        <a href="mailto:kutumbakaharshithsiddartha@gmail.com" class="bp">Email me</a>
+        <button onclick="openEmail()" class="bp" style="border:none;font-family:inherit;font-size:inherit;letter-spacing:inherit;cursor:none">&#9993; Email me</button>
         <a href="https://www.linkedin.com/in/harshithsiddartha/" target="_blank" class="bs">LinkedIn →</a>
         <a href="https://github.com/Siddarthkutumbaka" target="_blank" class="bs">GitHub →</a>
       </div>
@@ -336,13 +337,13 @@ footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 2
 <!-- ═══ S6: CONTACT ═══ -->
 <section id="s6">
   <div class="s6-in">
-    <div class="rv"><p class="sec-tag">Get in touch</p><h2 class="s6-h">Let's build<br><span class="d">something real.</span></h2><p class="s6-p">Open to hybrid and remote roles in Data Automation, Business Analysis, and AI Engineering. Based in Charlotte, NC.</p></div>
-    <div class="s6-links rv d1">
-      <a href="mailto:kutumbakaharshithsiddartha@gmail.com" class="bp">Email me</a>
+    <div class="rv in"><p class="sec-tag">Get in touch</p><h2 class="s6-h">Let's build<br><span class="d">something real.</span></h2><p class="s6-p">Open to hybrid and remote roles in Data Automation, Business Analysis, and AI Engineering. Based in Charlotte, NC.</p></div>
+    <div class="s6-links rv d1 in">
+      <button onclick="openEmail()" class="bp" style="border:none;font-family:inherit;font-size:inherit;letter-spacing:inherit;cursor:none">&#9993; Email me</button>
       <a href="https://www.linkedin.com/in/harshithsiddartha/" target="_blank" class="bs">LinkedIn &#8594;</a>
       <a href="https://github.com/Siddarthkutumbaka" target="_blank" class="bs">GitHub &#8594;</a>
     </div>
-    <p class="s6-det rv d2">kutumbakaharshithsiddartha@gmail.com &nbsp;&middot;&nbsp; +1 (704) 507-1796 &nbsp;&middot;&nbsp; Charlotte, NC</p>
+    <p class="s6-det rv d2 in">kutumbakaharshithsiddartha@gmail.com &nbsp;&middot;&nbsp; +1 (704) 507-1796 &nbsp;&middot;&nbsp; Charlotte, NC</p>
   </div>
 </section>
 
@@ -585,6 +586,47 @@ function onScroll() {
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll(); // run once on load
+
+// ─── EMAIL HANDLER ───────────────────────────────────
+function openEmail() {
+  const email = 'kutumbakaharshithsiddartha@gmail.com';
+  const subject = encodeURIComponent('Opportunity for Harshith Siddartha');
+  const body = encodeURIComponent('Hi Harshith,\n\nI came across your portfolio and wanted to connect regarding a potential opportunity.\n\n');
+  const mailto = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
+  // Try opening mail app
+  const a = document.createElement('a');
+  a.href = mailto;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  // Show toast with email address as fallback
+  showToast('Opening email app... \nIf nothing opens, email: ' + email);
+}
+
+function showToast(msg) {
+  const existing = document.getElementById('toast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.id = 'toast';
+  t.innerHTML = msg.replace('\n', '<br>');
+  t.style.cssText = `
+    position:fixed; bottom:40px; left:50%; transform:translateX(-50%);
+    background:rgba(255,255,255,0.12); backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.18); border-radius:14px;
+    padding:16px 24px; font-size:14px; color:#fff; font-family:Inter,sans-serif;
+    z-index:9999; text-align:center; line-height:1.6;
+    box-shadow:0 8px 32px rgba(0,0,0,0.4);
+    animation:toastIn .3s ease;
+  `;
+  document.head.insertAdjacentHTML('beforeend', '<style>@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}</style>');
+  document.body.appendChild(t);
+  setTimeout(() => {
+    t.style.transition = 'opacity .4s ease';
+    t.style.opacity = '0';
+    setTimeout(() => t.remove(), 400);
+  }, 4000);
+}
+
 </script>
 </body>
 </html>
