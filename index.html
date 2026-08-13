@@ -500,7 +500,7 @@ footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 2
 
 
 /* Typing animation */
-#typingSkill{display:inline;border-right:2px solid var(--accent);padding-right:2px}
+#typingSkill{display:inline;border-right:2px solid #2997ff;padding-right:2px;min-width:2px;font-weight:600;color:#fff}
 .hero-sub b{font-weight:600}
 
 
@@ -799,6 +799,91 @@ footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 2
   .mem-pill{font-size:11px;padding:5px 12px}
 }
 
+
+@media(max-width:480px){
+  /* Banner — thin strip at top, not overlapping anything */
+  .launch-banner{
+    top:8px !important;
+    bottom:auto !important;
+    left:8px !important;
+    right:8px !important;
+    font-size:10px !important;
+    padding:6px 12px !important;
+    border-radius:8px !important;
+    text-align:center !important;
+    max-width:none !important;
+  }
+  .launch-banner::after{ display:none !important }
+
+  /* Control panel — smaller, bottom right, fixed width */
+  .ctrl-panel{
+    bottom:12px !important;
+    right:8px !important;
+    left:auto !important;
+    max-width:140px !important;
+    min-width:130px !important;
+    padding:10px 12px !important;
+    z-index:25 !important;
+  }
+  .ctrl-label{ font-size:7px !important }
+  .ctrl-status{ font-size:9px !important; margin-bottom:8px !important }
+  .ctrl-lights{ margin-bottom:8px !important; gap:6px !important }
+  .ctrl-light{ width:10px !important; height:10px !important }
+  .joystick-base{ width:52px !important; height:52px !important }
+  .joystick-top{ height:16px !important; width:7px !important }
+  .joystick-btn{ width:20px !important; height:20px !important; font-size:8px !important }
+  .ctrl-switch-label{ font-size:11px !important; margin-top:6px !important }
+
+  /* Corner block — left of panel, doesn't overlap */
+  .corner-block{
+    bottom:12px !important;
+    left:10px !important;
+    max-width:calc(100% - 160px) !important;
+    z-index:24 !important;
+  }
+  .corner-block .cb-name{
+    font-size:clamp(22px,6vw,32px) !important;
+    line-height:1 !important;
+  }
+  .corner-block .cb-tag{ font-size:9px !important }
+  .corner-block .cb-sub{ display:none !important }
+  .corner-block::before{ font-size:8px !important; margin-bottom:3px !important }
+
+  /* Back button on mobile */
+  .back-btn{
+    top:8px !important;
+    left:10px !important;
+    font-size:12px !important;
+    padding:4px 8px !important;
+    background:rgba(0,0,0,.6) !important;
+    border-radius:8px !important;
+    z-index:850 !important;
+  }
+}
+
+
+@media(max-width:480px){
+  .back-btn.show{
+    top:0px !important;
+    left:0px !important;
+    width:auto !important;
+    background:rgba(0,0,0,.75) !important;
+    backdrop-filter:blur(8px) !important;
+    padding:10px 16px !important;
+    font-size:13px !important;
+    border-radius:0 0 12px 0 !important;
+    color:rgba(255,255,255,.85) !important;
+    cursor:pointer !important;
+    z-index:900 !important;
+  }
+  .back-btn.show:hover{ color:#fff !important }
+  
+  /* Nav on mobile — tighten */
+  .nav-in{ padding:0 12px }
+  .n-logo{ font-size:13px }
+  .n-cta{ font-size:12px }
+}
+
 </style>
 </head>
 <body>
@@ -874,7 +959,7 @@ footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 2
       <div class="s1-glow"></div>
       <p class="eyebrow">Data Automation Engineer &middot; Charlotte, NC</p>
       <h2 class="hero-h">Harshith<br><span class="dim">Siddartha.</span></h2>
-      <p class="hero-sub"><b id="typingSkill"></b><br>Five years of turning messy data into clean automation.</p>
+      <p class="hero-sub"><b id="typingSkill" style="min-width:4px"></b><br>Five years of turning messy data into clean automation.</p>
       <div class="hero-btns">
         <button onclick="openEmail()" class="bp">&#9993; Email me</button>
         <a href="https://www.linkedin.com/in/harshithsiddartha/" target="_blank" class="bs">LinkedIn &rarr;</a>
@@ -2406,6 +2491,7 @@ document.getElementById('page2')?.addEventListener('scroll', updateScrollBar, {p
   const skills = ['Alteryx','Xceptor','LangChain','Power BI','AWS','RAG / FAISS','LangGraph','FastAPI','PySpark','Terraform'];
   let si = 0, ci = 0, deleting = false;
   const el = document.getElementById('typingSkill');
+  if(el) el.textContent = '';
   if (!el) return;
   function type() {
     const word = skills[si];
