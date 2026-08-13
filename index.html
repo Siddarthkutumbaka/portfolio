@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harshith Siddartha</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .18s,height .18s}
+#cur.big{width:48px;height:48px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:800;height:52px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.07)}
+.nav-in{width:100%;max-width:1080px;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.n-logo{font-size:17px;font-weight:600;letter-spacing:-.3px;color:#fff;text-decoration:none;cursor:none}
+.n-links{display:flex;gap:24px;list-style:none}
+.n-links a{font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;cursor:none;transition:color .2s}
+.n-links a:hover,.n-links a.on{color:#fff}
+.n-cta{font-size:13px;color:#2997ff;text-decoration:none;cursor:none}
+.n-cta:hover{color:#fff;transition:color .2s}
+
+/* ═══ SECTION 1: HERO ═══ */
+#s1{position:relative;height:300vh}
+#s1-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+#hero-cv{position:absolute;inset:0;width:100%;height:100%}
+.s1-c{position:relative;z-index:2;transition:transform .05s linear,opacity .05s linear}
+.eyebrow{font-size:13px;font-weight:500;color:#2997ff;letter-spacing:.04em;margin-bottom:18px}
+.hero-h{font-size:clamp(58px,9.5vw,104px);font-weight:800;letter-spacing:-.055em;line-height:.94;color:#fff;margin-bottom:18px}
+.hero-h .dim{color:rgba(255,255,255,.25)}
+.hero-sub{font-size:clamp(16px,2.1vw,21px);font-weight:300;color:rgba(255,255,255,.48);letter-spacing:-.02em;line-height:1.52;margin-bottom:40px}
+.hero-sub b{color:rgba(255,255,255,.82);font-weight:500}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:64px}
+.bp{font-size:15px;font-weight:500;color:#fff;background:#0071e3;border-radius:980px;padding:11px 26px;text-decoration:none;cursor:none;transition:background .2s}
+.bp:hover{background:#0077ed}
+.bs{font-size:15px;color:#2997ff;text-decoration:none;cursor:none;padding:11px 8px;transition:color .2s}
+.bs:hover{color:#fff}
+.hero-stats{display:flex;gap:52px;justify-content:center}
+.hs-n{font-size:40px;font-weight:700;letter-spacing:-.048em;line-height:1;color:#fff}
+.hs-l{font-size:12px;color:#86868b;margin-top:4px}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(255,255,255,.28);letter-spacing:.06em;text-transform:uppercase;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);opacity:.28}50%{transform:translateX(-50%) translateY(-5px);opacity:.6}}
+
+/* ═══ SECTION 2: ABOUT — horizontal pan ═══ */
+#s2{position:relative;height:260vh;background:#000}
+#s2-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+.s2-rail{display:flex;align-items:center;gap:28px;padding:0 80px;will-change:transform}
+.s2-intro{min-width:min(580px,88vw);flex-shrink:0;padding-right:32px}
+.sec-tag{font-size:12px;font-weight:600;color:#2997ff;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.sec-h{font-size:clamp(36px,4.8vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.03;margin-bottom:20px}
+.sec-h .d{color:rgba(255,255,255,.28)}
+.sec-p{font-size:17px;font-weight:300;color:#86868b;line-height:1.72;letter-spacing:-.12px;margin-bottom:14px}
+.skills-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
+.sk{font-size:13px;color:rgba(255,255,255,.62);padding:5px 13px;border:1px solid rgba(255,255,255,.1);border-radius:980px;cursor:none;transition:all .22s;white-space:nowrap}
+.sk:hover{border-color:rgba(41,151,255,.5);color:#2997ff;transform:translateY(-2px)}
+
+/* Stat cards */
+.scard{min-width:270px;height:320px;background:rgba(255,255,255,.038);border:1px solid rgba(255,255,255,.07);border-radius:22px;padding:36px 32px;display:flex;flex-direction:column;justify-content:space-between;flex-shrink:0;cursor:none;will-change:transform;transition:background .25s,border-color .25s}
+.scard:hover{background:rgba(255,255,255,.072);border-color:rgba(255,255,255,.14)}
+.sc-n{font-size:68px;font-weight:700;letter-spacing:-.05em;color:#fff;line-height:1}
+.sc-l{font-size:15px;color:#86868b;font-weight:300;line-height:1.5;margin-top:8px}
+.sc-bar{height:2px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:auto}
+.sc-fill{height:100%;border-radius:2px;background:#2997ff;width:0;transition:width 1s ease}
+
+/* ═══ SECTION 3: WORK — rows cascade in ═══ */
+#s3{position:relative;height:300vh;background:#111}
+#s3-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.s3-in{max-width:1080px;width:100%;padding:0 40px}
+.s3-hd{margin-bottom:48px}
+.wr{display:grid;grid-template-columns:52px 1fr 1fr auto;align-items:center;gap:24px;padding:22px 16px;border-radius:14px;opacity:0;transform:translateY(32px);transition:opacity .5s ease,transform .5s ease,background .22s,padding-left .22s;cursor:none;border-bottom:1px solid rgba(255,255,255,.06)}
+.wr:first-of-type{border-top:1px solid rgba(255,255,255,.06)}
+.wr.visible{opacity:1;transform:translateY(0)}
+.wr:hover{background:rgba(255,255,255,.04);padding-left:24px}
+.wr:hover .wco{color:#2997ff}
+.wn{font-size:11px;font-weight:600;color:rgba(255,255,255,.22);letter-spacing:.06em}
+.wco{font-size:21px;font-weight:600;color:#fff;letter-spacing:-.03em;transition:color .22s}
+.wrl{font-size:14px;color:#86868b;font-weight:300}
+.wdt{font-size:12px;color:rgba(255,255,255,.26);text-align:right;white-space:nowrap}
+
+/* ═══ SECTION 4: PROJECTS — one at a time, full screen ═══ */
+#s4{position:relative;height:420vh;background:#000}
+#s4-pin{position:sticky;top:0;height:100vh;overflow:hidden}
+.s4-header{position:absolute;top:72px;left:50%;transform:translateX(-50%);text-align:center;z-index:5;pointer-events:none}
+.proj-arena{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+
+/* Each project card sits in the arena */
+.pcard{
+  position:absolute;
+  width:min(820px,92vw);
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:28px;
+  padding:52px 56px;
+  text-decoration:none;display:block;color:inherit;cursor:none;
+  /* default: hidden below */
+  opacity:0;
+  transform:translateY(90px) scale(0.92);
+  transition:opacity .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1), background .25s, border-color .25s;
+  pointer-events:none;
+}
+.pcard.current{
+  opacity:1;transform:translateY(0) scale(1);
+  transition:opacity .55s cubic-bezier(.22,1,.36,1), transform .55s cubic-bezier(.22,1,.36,1), background .25s;
+  pointer-events:all;
+}
+.pcard.leaving{
+  opacity:0;transform:translateY(-70px) scale(0.94);
+  transition:opacity .38s ease, transform .38s ease;
+  pointer-events:none;
+}
+.pcard:hover{background:rgba(255,255,255,.065);border-color:rgba(41,151,255,.3)}
+.pcard:hover .pc-name{color:#2997ff}
+.pc-meta{font-size:12px;font-weight:600;color:#2997ff;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
+.pc-name{font-size:clamp(26px,3.8vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1.08;color:#fff;margin-bottom:16px;transition:color .22s}
+.pc-desc{font-size:17px;color:#86868b;line-height:1.7;font-weight:300;letter-spacing:-.1px;max-width:620px;margin-bottom:32px}
+.pc-link{font-size:15px;font-weight:500;color:#2997ff;display:inline-flex;align-items:center;gap:6px}
+.pc-num{position:absolute;bottom:26px;right:32px;font-size:11px;color:rgba(255,255,255,.2);font-weight:600;letter-spacing:.06em}
+
+/* Progress bar and dots */
+.proj-progress{position:absolute;bottom:0;left:0;right:0;z-index:5;padding:0 0 28px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.proj-bar-bg{width:200px;height:2px;background:rgba(255,255,255,.1);border-radius:2px}
+.proj-bar-fill{height:100%;background:#fff;border-radius:2px;transition:width .4s ease}
+.proj-dots{display:flex;gap:8px}
+.pdot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.2);transition:background .3s,transform .3s}
+.pdot.on{background:#fff;transform:scale(1.4)}
+
+/* ═══ SECTION 5: CERTS — 3D flip cards ═══ */
+#s5{background:#111;padding:120px 24px}
+.s5-in{max-width:1080px;margin:0 auto}
+.certs-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:56px}
+.flip-wrap{height:230px;perspective:900px;cursor:none}
+.flip-wrap:hover .flip-inner{transform:rotateY(180deg)}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1)}
+.flip-f,.flip-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 16px;text-align:center}
+.flip-f{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+.flip-b{transform:rotateY(180deg);background:rgba(41,151,255,.08);border:1px solid rgba(41,151,255,.22)}
+.fi-ico{font-size:30px;margin-bottom:14px}
+.fi-nm{font-size:14px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:5px;letter-spacing:-.2px}
+.fi-og{font-size:11px;color:#86868b}
+.fb-txt{font-size:13px;color:#2997ff;font-weight:500;line-height:1.6;text-align:center}
+
+/* ═══ SECTION 6: CONTACT ═══ */
+#s6{background:#000;padding:160px 24px 120px;text-align:center}
+.s6-in{max-width:640px;margin:0 auto}
+.s6-h{font-size:clamp(50px,8vw,88px);font-weight:700;letter-spacing:-.05em;line-height:.94;margin-bottom:16px}
+.s6-h .d{color:rgba(255,255,255,.26)}
+.s6-p{font-size:19px;font-weight:300;color:#86868b;line-height:1.65;letter-spacing:-.15px;margin-bottom:52px}
+.s6-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.s6-det{font-size:13px;color:rgba(255,255,255,.25);letter-spacing:-.1px}
+
+/* FOOTER */
+footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 24px}
+.ft{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between}
+.ft span{font-size:12px;color:rgba(255,255,255,.25)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}.rv.d5{transition-delay:.5s}
+
+@media(max-width:900px){
+  .n-links{display:none}
+  .wr{grid-template-columns:40px 1fr}
+  .wrl,.wdt{display:none}
+  .certs-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{gap:24px}
+  .pcard{padding:36px 28px}
+  .s2-rail{padding:0 24px}
+}
+@media(max-width:560px){
+  .certs-grid{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+
+<nav>
+  <div class="nav-in">
+    <a href="#" class="n-logo">Harshith Siddartha</a>
+    <ul class="n-links">
+      <li><a href="#s2">About</a></li>
+      <li><a href="#s3">Work</a></li>
+      <li><a href="#s4">Projects</a></li>
+      <li><a href="#s5">Certs</a></li>
+      <li><a href="#s6">Contact</a></li>
+    </ul>
+    <a href="mailto:kutumbakaharshithsiddartha@gmail.com" class="n-cta">Get in touch →</a>
+  </div>
+</nav>
+
+<!-- ═══ S1: HERO ═══ -->
+<section id="s1">
+  <div id="s1-pin">
+    <canvas id="hero-cv"></canvas>
+    <div class="s1-c" id="s1c">
+      <p class="eyebrow">Data Automation Engineer · Charlotte, NC</p>
+      <h1 class="hero-h">Harshith<br><span class="dim">Siddartha.</span></h1>
+      <p class="hero-sub"><b>Alteryx · Xceptor · LangChain · Power BI · AWS</b><br>Five years turning messy data into clean automation.</p>
+      <div class="hero-btns">
+        <a href="mailto:kutumbakaharshithsiddartha@gmail.com" class="bp">Email me</a>
+        <a href="https://www.linkedin.com/in/harshithsiddartha/" target="_blank" class="bs">LinkedIn →</a>
+        <a href="https://github.com/Siddarthkutumbaka" target="_blank" class="bs">GitHub →</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-n">5+</div><div class="hs-l">Years experience</div></div>
+        <div><div class="hs-n">50K</div><div class="hs-l">RAG platform docs</div></div>
+        <div><div class="hs-n">40%</div><div class="hs-l">MTTR cut</div></div>
+        <div><div class="hs-n">1,400</div><div class="hs-l">Legacy tools replaced</div></div>
+      </div>
+    </div>
+    <div class="scroll-hint">&#8595;&nbsp; Scroll to explore</div>
+  </div>
+</section>
+
+<!-- ═══ S2: ABOUT — horizontal pan ═══ -->
+<section id="s2">
+  <div id="s2-pin">
+    <div class="s2-rail" id="s2rail">
+      <div class="s2-intro">
+        <p class="sec-tag">About</p>
+        <h2 class="sec-h">Built for the space between<br><span class="d">business and data.</span></h2>
+        <p class="sec-p">I'm a Data Automation Engineer and Business Analyst at Wells Fargo WIM Operations — replacing manual processes with Alteryx workflows and Xceptor pipelines that run themselves.</p>
+        <p class="sec-p">From reverse-engineering legacy Access databases nobody understands, to building RAG-based AI platforms that query 50,000 documents in plain English.</p>
+        <div class="skills-row">
+          <span class="sk">Alteryx</span><span class="sk">Xceptor</span><span class="sk">SQL</span><span class="sk">Python</span><span class="sk">Power BI</span><span class="sk">Tableau</span><span class="sk">LangChain</span><span class="sk">RAG/FAISS</span><span class="sk">OpenAI API</span><span class="sk">AWS</span><span class="sk">Azure</span><span class="sk">GCP</span><span class="sk">Docker</span><span class="sk">PySpark</span><span class="sk">FastAPI</span><span class="sk">Terraform</span>
+        </div>
+      </div>
+      <div class="scard" data-fill="88"><div><div class="sc-n">5+</div><div class="sc-l">Years in data engineering &amp; automation</div></div><div class="sc-bar"><div class="sc-fill"></div></div></div>
+      <div class="scard" data-fill="72"><div><div class="sc-n">50K</div><div class="sc-l">Documents indexed in AI RAG platform</div></div><div class="sc-bar"><div class="sc-fill"></div></div></div>
+      <div class="scard" data-fill="60"><div><div class="sc-n">40%</div><div class="sc-l">Mean time to resolution cut at Kingsmen</div></div><div class="sc-bar"><div class="sc-fill"></div></div></div>
+      <div class="scard" data-fill="50"><div><div class="sc-n">70+</div><div class="sc-l">Graduate students trained at UNC Charlotte</div></div><div class="sc-bar"><div class="sc-fill"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S3: WORK ═══ -->
+<section id="s3">
+  <div id="s3-pin">
+    <div class="s3-in">
+      <div class="s3-hd">
+        <p class="sec-tag">Experience</p>
+        <h2 class="sec-h" style="font-size:clamp(34px,4.2vw,56px)">Five roles.<br><span class="d">One thread.</span></h2>
+      </div>
+      <div id="wraps">
+        <div class="wr" id="wr0"><span class="wn">01</span><div><div class="wco">Wells Fargo</div></div><div class="wrl">Business Execution Consultant 2 &middot; WIM Operations &middot; Charlotte, NC</div><div class="wdt">Jul 2026 &ndash; Present</div></div>
+        <div class="wr" id="wr1"><span class="wn">02</span><div><div class="wco">Wissen IT &middot; Kroger</div></div><div class="wrl">Data Automation Engineer &middot; Remote</div><div class="wdt">Jan &ndash; Jun 2026</div></div>
+        <div class="wr" id="wr2"><span class="wn">03</span><div><div class="wco">Kingsmen Software</div></div><div class="wrl">Data Automation Engineer &middot; Remote</div><div class="wdt">Jul 2024 &ndash; Dec 2025</div></div>
+        <div class="wr" id="wr3"><span class="wn">04</span><div><div class="wco">UNC Charlotte</div></div><div class="wrl">Graduate Research Assistant &middot; Charlotte, NC</div><div class="wdt">Aug 2023 &ndash; Dec 2024</div></div>
+        <div class="wr" id="wr4"><span class="wn">05</span><div><div class="wco">Qualcomm</div></div><div class="wrl">Software Engineer &ndash; Data &amp; Automation &middot; Hyderabad</div><div class="wdt">Aug 2021 &ndash; Jul 2023</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S4: PROJECTS ═══ -->
+<section id="s4">
+  <div id="s4-pin">
+    <div class="s4-header rv">
+      <p class="sec-tag">Projects</p>
+      <h2 class="sec-h" style="font-size:clamp(32px,4vw,52px)">Real work.<br><span class="d">All 6 repos.</span></h2>
+    </div>
+    <div class="proj-arena">
+      <a href="https://github.com/Siddarthkutumbaka/flow-based-botnet-detection-ctu13" target="_blank" class="pcard" id="pc0">
+        <p class="pc-meta">2025 &middot; Python &middot; &#11088; 1</p>
+        <h3 class="pc-name">Flow-Based Botnet Detection</h3>
+        <p class="pc-desc">Random Forest &amp; Gradient Boosting on CTU-13 dataset. 99.46% accuracy. SHAP explainability and IEEE-style research writeup.</p>
+        <span class="pc-link">View on GitHub &#8594;</span>
+        <span class="pc-num">01 / 06</span>
+      </a>
+      <a href="https://github.com/Siddarthkutumbaka/Encrypted-Traffic-Classification-ML" target="_blank" class="pcard" id="pc1">
+        <p class="pc-meta">2024 &middot; Jupyter Notebook</p>
+        <h3 class="pc-name">Encrypted VPN Traffic Classification</h3>
+        <p class="pc-desc">HistGradientBoosting &amp; SHAP explainability. 14 VPN traffic categories. 90% accuracy &middot; 0.93 macro ROC-AUC score.</p>
+        <span class="pc-link">View on GitHub &#8594;</span>
+        <span class="pc-num">02 / 06</span>
+      </a>
+      <a href="https://github.com/Siddarthkutumbaka/dns-tunneling-detection-ml" target="_blank" class="pcard" id="pc2">
+        <p class="pc-meta">2024 &middot; Jupyter Notebook</p>
+        <h3 class="pc-name">DNS Tunneling Detection</h3>
+        <p class="pc-desc">Machine learning detection of covert DNS exfiltration attacks using behavioral flow analysis on network traffic data.</p>
+        <span class="pc-link">View on GitHub &#8594;</span>
+        <span class="pc-num">03 / 06</span>
+      </a>
+      <a href="https://github.com/Siddarthkutumbaka/botnet-c2-detection-ml" target="_blank" class="pcard" id="pc3">
+        <p class="pc-meta">2024 &middot; Jupyter Notebook</p>
+        <h3 class="pc-name">Botnet C2 Detection</h3>
+        <p class="pc-desc">Detecting botnet Command &amp; Control traffic using ML pipeline and behavioral flow feature extraction across network sessions.</p>
+        <span class="pc-link">View on GitHub &#8594;</span>
+        <span class="pc-num">04 / 06</span>
+      </a>
+      <a href="https://github.com/Siddarthkutumbaka/deepfake-robustness-benchmark" target="_blank" class="pcard" id="pc4">
+        <p class="pc-meta">2024 &middot; Python</p>
+        <h3 class="pc-name">Deepfake Robustness Benchmark</h3>
+        <p class="pc-desc">Benchmarking deepfake detectors against adversarial perturbations and compression. Measuring model robustness under attack conditions.</p>
+        <span class="pc-link">View on GitHub &#8594;</span>
+        <span class="pc-num">05 / 06</span>
+      </a>
+      <a href="https://github.com/Siddarthkutumbaka/deepfake-detection-convnext" target="_blank" class="pcard" id="pc5">
+        <p class="pc-meta">2024 &middot; Jupyter Notebook</p>
+        <h3 class="pc-name">Deepfake Detection &middot; ConvNeXt</h3>
+        <p class="pc-desc">ConvNeXt architecture fine-tuned on DFDC dataset for detecting AI-generated facial manipulation and synthetic media.</p>
+        <span class="pc-link">View on GitHub &#8594;</span>
+        <span class="pc-num">06 / 06</span>
+      </a>
+    </div>
+    <div class="proj-progress">
+      <div class="proj-bar-bg"><div class="proj-bar-fill" id="pbar" style="width:0%"></div></div>
+      <div class="proj-dots" id="pdots">
+        <div class="pdot on"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S5: CERTS ═══ -->
+<section id="s5">
+  <div class="s5-in">
+    <div class="rv"><p class="sec-tag">Certifications</p><h2 class="sec-h">Earned,<br><span class="d">not borrowed.</span></h2></div>
+    <div class="certs-grid">
+      <div class="flip-wrap rv d1"><div class="flip-inner"><div class="flip-f"><div class="fi-ico">&#9729;&#65039;</div><div class="fi-nm">AWS Certified Developer</div><div class="fi-og">Amazon Web Services &middot; Associate</div></div><div class="flip-b"><div class="fb-txt">Cloud-native dev, Lambda, DynamoDB, API Gateway</div></div></div></div>
+      <div class="flip-wrap rv d2"><div class="flip-inner"><div class="flip-f"><div class="fi-ico">&#127959;&#65039;</div><div class="fi-nm">AWS Solutions Architect</div><div class="fi-og">Amazon Web Services &middot; Associate</div></div><div class="flip-b"><div class="fb-txt">Scalable resilient systems on AWS infrastructure</div></div></div></div>
+      <div class="flip-wrap rv d3"><div class="flip-inner"><div class="flip-f"><div class="fi-ico">&#128311;</div><div class="fi-nm">Microsoft Azure</div><div class="fi-og">Microsoft &middot; Azure Certified</div></div><div class="flip-b"><div class="fb-txt">Azure cloud, data pipelines &amp; enterprise integration</div></div></div></div>
+      <div class="flip-wrap rv d4"><div class="flip-inner"><div class="flip-f"><div class="fi-ico">&#9889;</div><div class="fi-nm">Alteryx Designer Core</div><div class="fi-og">Alteryx &middot; Licensed</div></div><div class="flip-b"><div class="fb-txt">Workflow automation, Batch Macros &amp; Alteryx Server</div></div></div></div>
+      <div class="flip-wrap rv d5"><div class="flip-inner"><div class="flip-f"><div class="fi-ico">&#10022;</div><div class="fi-nm">Xceptor Platform</div><div class="fi-og">Xceptor &middot; Licensed</div></div><div class="flip-b"><div class="fb-txt">Exception-based reconciliation &amp; audit trails</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S6: CONTACT ═══ -->
+<section id="s6">
+  <div class="s6-in">
+    <div class="rv"><p class="sec-tag">Get in touch</p><h2 class="s6-h">Let's build<br><span class="d">something real.</span></h2><p class="s6-p">Open to hybrid and remote roles in Data Automation, Business Analysis, and AI Engineering. Based in Charlotte, NC.</p></div>
+    <div class="s6-links rv d1">
+      <a href="mailto:kutumbakaharshithsiddartha@gmail.com" class="bp">Email me</a>
+      <a href="https://www.linkedin.com/in/harshithsiddartha/" target="_blank" class="bs">LinkedIn &#8594;</a>
+      <a href="https://github.com/Siddarthkutumbaka" target="_blank" class="bs">GitHub &#8594;</a>
+    </div>
+    <p class="s6-det rv d2">kutumbakaharshithsiddartha@gmail.com &nbsp;&middot;&nbsp; +1 (704) 507-1796 &nbsp;&middot;&nbsp; Charlotte, NC</p>
+  </div>
+</section>
+
+<footer><div class="ft"><span>&#169; 2026 Harshith Siddartha Kutumbaka</span><span>Data Automation &middot; AI &middot; Business Analysis</span></div></footer>
+
+<script>
+// ─── CURSOR ───────────────────────────────────────────
+const cur = document.getElementById('cur');
+let cx = 0, cy = 0;
+document.addEventListener('mousemove', e => {
+  cx = e.clientX; cy = e.clientY;
+  cur.style.left = cx + 'px'; cur.style.top = cy + 'px';
+});
+document.querySelectorAll('a,button,.scard,.flip-wrap,.wr,.sk,.pcard').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+// ─── HERO PARTICLE CANVAS ─────────────────────────────
+(function() {
+  const cv = document.getElementById('hero-cv');
+  const ctx = cv.getContext('2d');
+  let W, H, pts = [], mx = 0, my = 0;
+
+  function resize() {
+    W = cv.width = cv.offsetWidth;
+    H = cv.height = cv.offsetHeight;
+    mx = W / 2; my = H / 2;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 120; i++) {
+    pts.push({
+      x: Math.random() * 1000, y: Math.random() * 800,
+      vx: (Math.random() - .5) * .28, vy: (Math.random() - .5) * .28,
+      r: Math.random() * 1.4 + .3, a: Math.random() * .4 + .08
+    });
+  }
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    const g = ctx.createRadialGradient(W/2, H*.46, 0, W/2, H*.46, W*.5);
+    g.addColorStop(0, 'rgba(0,113,227,.12)'); g.addColorStop(1, 'transparent');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    pts.forEach(p => {
+      p.x += p.vx + (mx - W/2) * .0001;
+      p.y += p.vy + (my - H/2) * .00007;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + p.a + ')'; ctx.fill();
+    });
+    for (let i = 0; i < pts.length; i++) for (let j = i+1; j < pts.length; j++) {
+      const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+      const d = Math.sqrt(dx*dx + dy*dy);
+      if (d < 100) {
+        ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+        ctx.strokeStyle = 'rgba(255,255,255,' + (.06*(1-d/100)) + ')';
+        ctx.lineWidth = .6; ctx.stroke();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+// ─── SCROLL PROGRESS HELPER ───────────────────────────
+// Measures progress through a section CORRECTLY
+// by reading the section's own offsetTop vs scrollY
+function sectionProgress(sectionId) {
+  const sec = document.getElementById(sectionId);
+  if (!sec) return 0;
+  const scrollable = sec.offsetHeight - window.innerHeight;
+  const scrolled   = window.scrollY - sec.offsetTop;
+  return Math.max(0, Math.min(1, scrolled / scrollable));
+}
+
+// ─── S1: HERO — zoom out as you scroll ───────────────
+const s1c = document.getElementById('s1c');
+function tickS1() {
+  const p = sectionProgress('s1');
+  const scale = 1 + p * .14;
+  const op = Math.max(0, 1 - p * 1.5);
+  s1c.style.transform = 'scale(' + scale + ')';
+  s1c.style.opacity = op;
+}
+
+// ─── S2: ABOUT — pan rail horizontally ───────────────
+const rail   = document.getElementById('s2rail');
+const scards = document.querySelectorAll('.scard');
+let barsAnimated = false;
+
+function tickS2() {
+  const p = sectionProgress('s2');
+  // How far to pan: total rail width minus viewport
+  const maxPan = rail.scrollWidth - window.innerWidth;
+  const pan = p * maxPan;
+  rail.style.transform = 'translateX(' + (-pan) + 'px)';
+
+  // Animate stat card bars once they come into view (p > 0.15)
+  if (p > 0.15 && !barsAnimated) {
+    barsAnimated = true;
+    document.querySelectorAll('.sc-fill').forEach(el => {
+      const pct = el.parentElement.parentElement.dataset.fill || '60';
+      setTimeout(() => { el.style.width = pct + '%'; }, 200);
+    });
+  }
+
+  // 3D tilt each stat card based on how far into view it is
+  scards.forEach((card, i) => {
+    const cardPan = (i + 1) * 310; // approx position in rail
+    const offset = pan - cardPan;
+    const tilt = Math.max(-18, Math.min(18, offset * .06));
+    const z = Math.max(0, 16 - Math.abs(offset) * .04);
+    card.style.transform = 'perspective(700px) rotateY(' + (-tilt) + 'deg) translateZ(' + z + 'px)';
+  });
+}
+
+// ─── S3: WORK — stagger rows in one by one ───────────
+const workEls = [0,1,2,3,4].map(i => document.getElementById('wr' + i));
+function tickS3() {
+  const p = sectionProgress('s3');
+  workEls.forEach((el, i) => {
+    if (!el) return;
+    const threshold = (i + .5) / (workEls.length + 1);
+    if (p >= threshold) {
+      el.classList.add('visible');
+    } else {
+      el.classList.remove('visible');
+    }
+  });
+}
+
+// ─── S4: PROJECTS — one card per scroll step ─────────
+const NPROJ = 6;
+const pcards = Array.from({length: NPROJ}, (_, i) => document.getElementById('pc' + i));
+const pdots  = document.querySelectorAll('.pdot');
+const pbar   = document.getElementById('pbar');
+let activePrj = -1;
+
+function showProject(idx) {
+  if (idx === activePrj) return;
+  // Exit old
+  if (activePrj >= 0 && pcards[activePrj]) {
+    pcards[activePrj].classList.remove('current');
+    pcards[activePrj].classList.add('leaving');
+    const old = activePrj;
+    setTimeout(() => { if (pcards[old]) pcards[old].classList.remove('leaving'); }, 420);
+    if (pdots[activePrj]) pdots[activePrj].classList.remove('on');
+  }
+  activePrj = idx;
+  // Enter new
+  if (pcards[idx]) {
+    setTimeout(() => { if (pcards[idx]) pcards[idx].classList.add('current'); }, 40);
+  }
+  if (pdots[idx]) pdots[idx].classList.add('on');
+  // Progress bar
+  if (pbar) pbar.style.width = ((idx / (NPROJ - 1)) * 100) + '%';
+}
+
+function tickS4() {
+  const p = sectionProgress('s4');
+  const idx = Math.min(NPROJ - 1, Math.floor(p * NPROJ));
+  showProject(idx);
+}
+
+// ─── STAT CARD MOUSE TILT ─────────────────────────────
+scards.forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - .5;
+    const y = (e.clientY - r.top)  / r.height - .5;
+    card.style.transform = 'perspective(700px) rotateX(' + (-y*16) + 'deg) rotateY(' + (x*16) + 'deg) translateZ(14px)';
+    card.style.transition = 'transform .08s ease';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(700px) rotateX(0) rotateY(0) translateZ(0)';
+    card.style.transition = 'transform .5s ease';
+  });
+});
+
+// ─── PROJECT CARD MOUSE TILT ──────────────────────────
+pcards.forEach(card => {
+  if (!card) return;
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - .5;
+    const y = (e.clientY - r.top)  / r.height - .5;
+    card.style.transform = 'translate(-50%,-50%) rotateX(' + (-y*8) + 'deg) rotateY(' + (x*8) + 'deg) translateZ(20px) scale(1.01)';
+    card.style.transition = 'transform .08s ease, opacity .5s, border-color .25s, background .25s';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'translate(-50%,-50%) rotateX(0) rotateY(0) translateZ(0) scale(1)';
+    card.style.transition = 'transform .5s ease, opacity .5s, border-color .25s, background .25s';
+  });
+});
+
+// Reposition project cards to center
+pcards.forEach(card => {
+  if (card) {
+    card.style.left = '50%';
+    card.style.top  = '50%';
+    card.style.transform = 'translate(-50%,-50%) translateY(90px) scale(0.92)';
+  }
+});
+// Update CSS current class to keep centering
+document.querySelectorAll('.pcard.current').forEach(c => {
+  c.style.transform = 'translate(-50%,-50%) translateY(0) scale(1)';
+});
+
+// ─── SCROLL REVEAL (s5, s6) ───────────────────────────
+const rvEls = document.querySelectorAll('.rv');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+rvEls.forEach(el => ro.observe(el));
+
+// ─── NAV ACTIVE ───────────────────────────────────────
+const navAs = document.querySelectorAll('.n-links a');
+function tickNav() {
+  const sy = window.scrollY + 80;
+  ['s2','s3','s4','s5','s6'].forEach(id => {
+    const sec = document.getElementById(id);
+    const a   = document.querySelector('.n-links a[href="#' + id + '"]');
+    if (!sec || !a) return;
+    const active = sy >= sec.offsetTop && sy < sec.offsetTop + sec.offsetHeight;
+    a.classList.toggle('on', active);
+  });
+}
+
+// ─── MAIN SCROLL LOOP ─────────────────────────────────
+function onScroll() {
+  tickS1();
+  tickS2();
+  tickS3();
+  tickS4();
+  tickNav();
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll(); // run once on load
+</script>
+</body>
+</html>
