@@ -937,6 +937,91 @@ footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 2
   .sch-field input,.sch-field textarea,.sch-field select{ font-size:16px }
 }
 
+
+/* ═══ MOBILE FIXES v2 ═══ */
+@media(max-width:480px){
+
+  /* ── LAUNCH PAGE: stack name top-left, panel bottom-right, no overlap ── */
+  #page1{ overflow:hidden }
+
+  .corner-block{
+    bottom:auto;top:auto;
+    left:16px;
+    bottom:16px;
+    max-width:55vw;        /* stop before the panel */
+    z-index:20;
+  }
+  .corner-block .cb-name{ font-size:clamp(24px,7vw,34px);line-height:1 }
+  .corner-block .cb-sub{ font-size:12px;display:none }  /* hide on tiny screens */
+  .corner-block::before{ font-size:8px;margin-bottom:4px }
+
+  .ctrl-panel{
+    position:absolute;
+    bottom:16px;right:12px;
+    padding:12px 14px;
+    min-width:140px;
+    max-width:44vw;
+    z-index:21;
+  }
+  .ctrl-label{ font-size:7px;letter-spacing:.12em;margin-bottom:4px }
+  .ctrl-status{ font-size:9px;margin-bottom:10px }
+  .ctrl-lights{ gap:7px;margin-bottom:10px }
+  .ctrl-light{ width:11px;height:11px }
+  .joystick-base{ width:56px;height:56px }
+  .joystick-top{ height:18px;width:8px }
+  .joystick-btn{ width:22px;height:22px;font-size:9px }
+  .ctrl-switch-label{ font-size:11px;margin-top:6px }
+
+  .launch-banner{
+    top:12px;left:12px;right:12px;bottom:auto;
+    font-size:11px;padding:8px 14px;
+    border-radius:10px;text-align:center;
+    justify-content:center;
+  }
+
+  /* ── WORK CARDS: fix grid, date, overflow ── */
+  .wcard-head{
+    display:flex;flex-direction:column;
+    gap:8px;padding:14px 12px;
+    align-items:flex-start;
+  }
+  .wcard-head-row1{ display:flex;align-items:center;gap:12px;width:100% }
+  .wcard-right{
+    display:flex;flex-direction:row;
+    align-items:center;justify-content:space-between;
+    width:100%;padding:0 0 4px;
+  }
+  .wcard-date{ font-size:11px;white-space:normal;text-align:left }
+  .wcard-arrow{ font-size:14px }
+  .wcard-co{ font-size:17px }
+  .wcard-role{ font-size:12px;white-space:normal;line-height:1.4 }
+  .wcard-logo{ width:42px;height:42px;flex-shrink:0 }
+
+  /* Fix: work card grid was 4 cols on mobile - force simple flex layout */
+  .wr{ display:none }  /* hide old row style if present */
+
+  /* Prevent text overflow in work section */
+  .work-cards *{ box-sizing:border-box;max-width:100% }
+  .wcard-body-inner{
+    padding:0 12px 16px 12px;
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .wcard-detail-val{ font-size:13px;word-break:break-word }
+  .wcard-tags{ gap:4px }
+  .wcard-tag{ font-size:9px;padding:2px 7px }
+
+  /* ── NAV: ensure no overflow ── */
+  .nav-in{ padding:0 14px }
+  .n-logo{ font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55vw }
+  .n-cta{ font-size:12px;white-space:nowrap }
+
+  /* ── General overflow protection ── */
+  body{ overflow-x:hidden }
+  .port-wrap,.page-in{ max-width:100vw;overflow-x:hidden }
+  img{ max-width:100% }
+}
+
 </style>
 </head>
 <body>
