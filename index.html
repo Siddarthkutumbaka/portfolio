@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Harshith Siddartha</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -775,6 +775,166 @@ footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 2
   width:1px;height:40px;
   background:linear-gradient(180deg,rgba(41,151,255,.5),transparent);
   pointer-events:none;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   MOBILE — full responsive overhaul (max-width: 480px)
+   ═══════════════════════════════════════════════════ */
+@media(max-width:480px){
+
+  /* ── PAGE 1: ROCKET LAUNCH ── */
+  #page1 canvas{ touch-action:none }
+  .corner-block{ bottom:24px;left:20px }
+  .corner-block .cb-name{ font-size:clamp(28px,8vw,40px) }
+  .corner-block .cb-sub{ font-size:13px }
+  .ctrl-panel{
+    bottom:20px;right:12px;
+    padding:14px 16px;
+    min-width:150px;
+  }
+  .ctrl-label{ font-size:8px;letter-spacing:.14em }
+  .ctrl-status{ font-size:10px;margin-bottom:12px }
+  .joystick-base{ width:64px;height:64px }
+  .joystick-top{ height:22px }
+  .joystick-btn{ width:26px;height:26px;font-size:10px }
+  .ctrl-switch-label{ font-size:12px }
+  .launch-banner{
+    bottom:auto;top:16px;right:12px;left:12px;
+    font-size:11px;padding:8px 14px;
+    border-radius:10px;
+    justify-content:center;text-align:center;
+  }
+  .launch-banner::after{ display:none }
+
+  /* ── NAV ── */
+  nav{ height:44px }
+  .n-logo{ font-size:14px }
+  .n-cta{ font-size:12px }
+
+  /* ── HERO (page 2) ── */
+  #s1{ padding:60px 16px 40px }
+  .hero-h{ font-size:clamp(44px,13vw,72px) }
+  .hero-sub{ font-size:14px;margin-bottom:28px }
+  .hero-btns{ gap:8px }
+  .bp{ font-size:14px;padding:10px 20px }
+  .hero-stats{ gap:16px;flex-wrap:wrap;justify-content:center }
+  .hs-n{ font-size:32px }
+  .hs-l{ font-size:11px }
+
+  /* ── SECTIONS ── */
+  .page{ padding:72px 16px }
+  .sec-h{ font-size:clamp(28px,8vw,44px) }
+  .sec-p{ font-size:15px }
+  .page-in{ max-width:100% }
+
+  /* ── ABOUT ── */
+  .about-grid{ grid-template-columns:1fr;gap:40px }
+  .stat-grid{ grid-template-columns:1fr 1fr }
+  .sc-n{ font-size:40px }
+  .skills-row{ gap:5px }
+  .sk{ font-size:11px;padding:4px 10px }
+
+  /* ── TECH STACK ICONS ── */
+  .ts-icon-grid{ grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:28px }
+  .ts-icon-card{ padding:12px 6px }
+  .ts-icon-img{ width:34px;height:34px }
+  .ts-icon-card span{ font-size:7px }
+
+  /* ── GAME ── */
+  .game-container{ padding:20px 14px }
+  .gcats{ grid-template-columns:1fr 1fr;gap:7px }
+  .gcat{ padding:10px 8px;min-height:80px }
+  .gcat-label{ font-size:8px }
+  .gpool{ padding:10px;gap:5px }
+  .gchip{ font-size:9px;padding:5px 10px }
+  .gpill{ font-size:11px;padding:4px 10px }
+
+  /* ── IMPACT METRICS ── */
+  .impact-grid{ grid-template-columns:1fr;gap:14px }
+  .im-big{ min-height:180px;padding:28px 24px }
+  .im-big-n{ font-size:72px }
+  .im-right{ grid-template-columns:1fr 1fr;gap:12px }
+  .im-num{ font-size:44px }
+  .im-desc{ font-size:11px }
+
+  /* ── WORK CARDS ── */
+  .wcard-head{ grid-template-columns:44px 1fr;gap:12px;padding:16px 12px }
+  .wcard-logo{ width:44px;height:44px;border-radius:10px }
+  .wcard-co{ font-size:16px }
+  .wcard-role{ font-size:12px }
+  .wcard-date{ font-size:10px }
+  .wcard-right{ gap:2px }
+  .wcard-body-inner{ padding:0 12px 20px;gap:14px 0 }
+  .wcard-tag{ font-size:9px;padding:2px 8px }
+
+  /* ── PROJECTS ── */
+  .proj-mag{ grid-template-columns:1fr;border-radius:14px }
+  .pmag{ padding:24px 20px }
+  .pmag-name{ font-size:15px }
+  .pmag-desc{ font-size:12px }
+  .pmag-icon{ font-size:26px }
+
+  /* ── VERIFICATION TERMINALS ── */
+  .term-grid{ grid-template-columns:1fr;gap:14px }
+  .term-card.wide{ grid-column:span 1 }
+  .term-body{ padding:14px;font-size:11px;min-height:160px }
+  .term-bar{ padding:8px 12px }
+  .term-title-bar{ font-size:10px }
+  .tcmd{ font-size:10px;word-break:break-all }
+
+  /* ── ROCKET GAME SECTION ── */
+  .rocket-canvas{ height:300px }
+  .rocket-hud{ flex-wrap:wrap;gap:6px;padding:10px 12px }
+  .rhud-pill{ font-size:10px;padding:4px 10px }
+  .ro-title{ font-size:24px }
+  .ro-stats{ gap:10px }
+  .ro-stat{ padding:12px 16px;min-width:70px }
+  .ro-stat-n{ font-size:24px }
+  .ro-btn{ font-size:13px;padding:11px 22px }
+
+  /* ── SCHEDULE ── */
+  .schedule-section{ padding:72px 16px }
+  .sch-form{ padding:24px 18px }
+  .sch-row{ grid-template-columns:1fr }
+  .sch-field input,.sch-field textarea,.sch-field select{
+    font-size:16px; /* prevents iOS zoom */
+  }
+
+  /* ── CONTACT ── */
+  #s6{ padding:100px 16px 80px }
+  .s6-h{ font-size:clamp(40px,10vw,60px) }
+  .s6-p{ font-size:15px }
+  .s6-links{ gap:8px }
+
+  /* ── FOOTER ── */
+  .ft{ flex-direction:column;gap:8px;text-align:center }
+
+  /* ── TOOLTIPS ── hide on mobile ── */
+  .ts-tooltip{ display:none!important }
+
+  /* ── CURSOR ── hide custom cursor on touch ── */
+  #cur{ display:none }
+  html,body{ cursor:auto }
+}
+
+/* ── TABLET (481px – 768px) ── */
+@media(min-width:481px) and (max-width:768px){
+  .corner-block .cb-name{ font-size:clamp(32px,6vw,48px) }
+  .hero-h{ font-size:clamp(52px,11vw,80px) }
+  .sec-h{ font-size:clamp(32px,6vw,52px) }
+  .impact-grid{ grid-template-columns:1fr }
+  .im-right{ grid-template-columns:1fr 1fr }
+  .term-grid{ grid-template-columns:1fr }
+  .term-card.wide{ grid-column:span 1 }
+  .proj-mag{ grid-template-columns:1fr 1fr }
+  .pmag.featured{ grid-column:span 2 }
+  .ts-icon-grid{ grid-template-columns:repeat(5,1fr) }
+  .ctrl-panel{ padding:16px 18px }
+  .page{ padding:80px 20px }
+  .launch-banner{ right:18px;font-size:12px }
+  #s6{ padding:120px 20px 80px }
+  .sch-field input,.sch-field textarea,.sch-field select{ font-size:16px }
 }
 
 </style>
