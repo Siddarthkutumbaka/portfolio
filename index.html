@@ -884,6 +884,70 @@ footer{background:#111;border-top:1px solid rgba(255,255,255,.06);padding:26px 2
   .n-cta{ font-size:12px }
 }
 
+
+@media(max-width:480px){
+
+  /* ── NAV: back button pushing logo off screen ── */
+  .back-btn.show{
+    position:fixed;
+    top:0;left:0;
+    padding:8px 12px;
+    font-size:12px;
+    background:rgba(0,0,0,.8);
+    backdrop-filter:blur(8px);
+    border-radius:0 0 10px 0;
+    z-index:901;
+    color:rgba(255,255,255,.8);
+    cursor:pointer;
+    white-space:nowrap;
+    width:auto !important;
+  }
+  /* Nav adjusts so logo isn't hidden behind back button */
+  nav .nav-in{
+    padding-left:72px !important;
+  }
+  .n-logo{
+    font-size:12px !important;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:140px !important;
+  }
+
+  /* ── IMPACT METRICS: full single column, no horizontal overflow ── */
+  .impact-section{ padding:72px 16px !important; overflow:hidden }
+  .impact-grid{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:12px !important;
+    width:100% !important;
+    overflow:hidden !important;
+  }
+  .im-big{
+    width:100% !important;
+    min-height:160px !important;
+    padding:28px 24px !important;
+    box-sizing:border-box !important;
+  }
+  .im-big-n{ font-size:64px !important }
+  .im-right{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+    width:100% !important;
+  }
+  .im-card{
+    padding:20px 16px !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+    min-height:120px !important;
+  }
+  .im-num{ font-size:36px !important }
+  .im-desc{ font-size:11px !important }
+  .im-tag{ font-size:9px !important }
+  .im-badge{ font-size:8px !important; padding:3px 7px !important }
+}
+
 </style>
 </head>
 <body>
